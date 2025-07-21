@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import DecorativeLines from "./DecorativeLines";
+
 
 const phrases = [
   "a JavaScript enthusiast",
@@ -41,7 +43,8 @@ const About = () => {
   }, []);
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-[60vh] bg-gradient-to-b from-[#f8fafc] via-[#e0e7ef] to-[#cbd5e1] dark:from-[#0f2027] dark:via-[#203a43] dark:to-[#2c5364] text-black dark:text-white relative">
+    <section className="flex flex-col items-center justify-center min-h-[60vh] text-white relative" style={{ background: '#232946' }}>
+      <DecorativeLines />
       {/* Blurred color background */}
       {/* Greeting */}
       <div className="mt-8 text-center z-20 flex flex-col items-center space-y-2">

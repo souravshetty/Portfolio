@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
+import LightBar from "./LightBar";
 
 const experiences = [
   {
@@ -27,23 +28,27 @@ const experiences = [
   },
 ];
 
-const Experience = () => (
-  <section className="max-w-2xl mx-auto mb-10 px-4">
-    <h2 className="text-2xl font-semibold mb-4">Work Experience</h2>
-    <div className="space-y-6">
-      {experiences.map((exp) => (
-        <div key={exp.company} className="flex items-start space-x-4 bg-white rounded-lg shadow p-4">
-          <img src={exp.logo} alt={exp.company} className="w-12 h-12 rounded-full object-cover" />
-          <div>
-            <h3 className="font-bold text-lg">{exp.company}</h3>
-            <div className="text-sm text-gray-600">{exp.title}</div>
-            <div className="text-xs text-gray-400 mb-1">{exp.date}</div>
-            <p className="text-gray-700 text-sm">{exp.description}</p>
+const Experience = () => {
+  const headingRef = useRef(null);
+  return (
+    <section className="max-w-2xl mx-auto mb-10 px-4">
+      <LightBar color="#22d3ee" glow="#22d3ee" headingRef={headingRef} />
+      <h2 ref={headingRef} className="text-2xl font-semibold mb-4 text-center">Work Experience</h2>
+      <div className="space-y-6">
+        {experiences.map((exp) => (
+          <div key={exp.company} className="flex items-start space-x-4 bg-white rounded-lg shadow p-4">
+            <img src={exp.logo} alt={exp.company} className="w-12 h-12 rounded-full object-cover" />
+            <div>
+              <h3 className="font-bold text-lg">{exp.company}</h3>
+              <div className="text-sm text-gray-600">{exp.title}</div>
+              <div className="text-xs text-gray-400 mb-1">{exp.date}</div>
+              <p className="text-gray-700 text-sm">{exp.description}</p>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
-  </section>
-);
+        ))}
+      </div>
+    </section>
+  );
+};
 
 export default Experience; 

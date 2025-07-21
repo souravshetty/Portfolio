@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
+import LightBar from "./LightBar";
 
 const projects = [
   {
@@ -23,29 +24,33 @@ const projects = [
   },
 ];
 
-const Projects = () => (
-  <section className="max-w-4xl mx-auto mb-10 px-4">
-    <h2 className="text-2xl font-semibold mb-4">Projects</h2>
-    <div className="grid md:grid-cols-2 gap-6">
-      {projects.map((project) => (
-        <div key={project.name} className="bg-white rounded-lg shadow p-4 flex flex-col">
-          <img src={project.image} alt={project.name} className="rounded mb-3 h-40 object-cover" />
-          <h3 className="font-bold text-xl mb-1">{project.name}</h3>
-          <div className="text-xs text-gray-400 mb-1">{project.date}</div>
-          <p className="text-gray-700 text-sm mb-2">{project.description}</p>
-          <div className="flex flex-wrap gap-2 mb-2">
-            {project.tech.map((t) => (
-              <span key={t} className="bg-gray-200 text-gray-800 px-2 py-0.5 rounded-full text-xs font-medium shadow">{t}</span>
-            ))}
+const Projects = () => {
+  const headingRef = useRef(null);
+  return (
+    <section className="max-w-4xl mx-auto mb-10 px-4">
+      <LightBar color="#22d3ee" glow="#22d3ee" headingRef={headingRef} />
+      <h2 ref={headingRef} className="text-2xl font-semibold mb-4 text-center">Projects</h2>
+      <div className="grid md:grid-cols-2 gap-6">
+        {projects.map((project) => (
+          <div key={project.name} className="bg-white rounded-lg shadow p-4 flex flex-col">
+            <img src={project.image} alt={project.name} className="rounded mb-3 h-40 object-cover" />
+            <h3 className="font-bold text-xl mb-1">{project.name}</h3>
+            <div className="text-xs text-gray-400 mb-1">{project.date}</div>
+            <p className="text-gray-700 text-sm mb-2">{project.description}</p>
+            <div className="flex flex-wrap gap-2 mb-2">
+              {project.tech.map((t) => (
+                <span key={t} className="bg-gray-200 text-gray-800 px-2 py-0.5 rounded-full text-xs font-medium shadow">{t}</span>
+              ))}
+            </div>
+            <div className="mt-auto flex gap-2">
+              <a href={project.website} className="bg-black text-white px-3 py-1 rounded text-xs" target="_blank" rel="noopener noreferrer">Website</a>
+              <a href={project.source} className="bg-gray-700 text-white px-3 py-1 rounded text-xs" target="_blank" rel="noopener noreferrer">Source</a>
+            </div>
           </div>
-          <div className="mt-auto flex gap-2">
-            <a href={project.website} className="bg-black text-white px-3 py-1 rounded text-xs" target="_blank" rel="noopener noreferrer">Website</a>
-            <a href={project.source} className="bg-gray-700 text-white px-3 py-1 rounded text-xs" target="_blank" rel="noopener noreferrer">Source</a>
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
-);
+        ))}
+      </div>
+    </section>
+  );
+};
 
 export default Projects; 
