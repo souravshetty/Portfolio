@@ -1,58 +1,66 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const LightBar = ({ color = "#22d3ee", glow = "#22d3ee", headingRef, widthOffset = 40 }) => {
-  const [expanded, setExpanded] = useState(false);
-  const [barWidth, setBarWidth] = useState(60);
+/**
+ * LightBar component
+ * Props:
+ * - headingRef: React ref to the heading element (for positioning)
+ * - widthOffset: number (optional, px to add/subtract from heading width)
+ */
+const LightBar = ({ headingRef, widthOffset = 0 }) => {
+  const barRef = useRef(null);
+  const [barWidth, setBarWidth] = useState(0);
+  const [visible, setVisible] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
+  // Detect dark mode
   useEffect(() => {
-    if (!headingRef?.current) return;
-    const handleScroll = () => {
-      const rect = headingRef.current.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.7 && rect.bottom > 0) {
-        setExpanded(true);
-      } else {
-        setExpanded(false);
+    const match = window.matchMedia('(prefers-color-scheme: dark)');
+    setIsDark(match.matches);
+    const handler = (e) => setIsDark(e.matches);
+    match.addEventListener('change', handler);
+    return () => match.removeEventListener('change', handler);
+  }, []);
+
+  // Set bar width based on heading
+  useEffect(() => {
+    if (headingRef && headingRef.current) {
+      const headingWidth = headingRef.current.offsetWidth;
+      setBarWidth(headingWidth + widthOffset);
+    }
+  }, [headingRef, widthOffset, headingRef?.current?.offsetWidth]);
+
+  // Intersection Observer to show/hide bar
+  useEffect(() => {
+    if (!headingRef || !headingRef.current) return;
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        setVisible(entry.isIntersecting || entry.intersectionRatio > 0);
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.3, // 30% of heading visible
       }
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    );
+    observer.observe(headingRef.current);
+    return () => observer.disconnect();
   }, [headingRef]);
 
-  useEffect(() => {
-    if (headingRef?.current && expanded) {
-      setBarWidth(headingRef.current.offsetWidth + widthOffset); // wider than heading
-    } else {
-      setBarWidth(60);
-    }
-  }, [expanded, headingRef, widthOffset]);
+  const barColor = isDark ? "#22d3ee" : "#000";
+  const barGlow = isDark ? "#22d3ee" : "#000";
 
   return (
-    <div className="relative w-full flex justify-center mb-8" style={{ minHeight: 60 }}>
-      {/* The glowing effect */}
+    <div className="relative flex justify-center items-center mb-2" style={{ minHeight: 12 }}>
       <div
-        className="absolute left-0 right-0 mx-auto transition-all duration-700"
+        ref={barRef}
+        className="rounded-full transition-all duration-700"
         style={{
-          top: 0,
-          height: "60px",
-          width: `${barWidth}px`,
-          background: `radial-gradient(ellipse at top, ${glow} 60%, transparent 100%)`,
-          filter: "blur(8px)",
-          opacity: 0.7,
-          zIndex: 0,
-          transition: "width 0.7s cubic-bezier(0.4,0,0.2,1)",
-        }}
-      />
-      {/* The light bar */}
-      <div
-        className="relative transition-all duration-700"
-        style={{
-          width: `${barWidth}px`,
-          height: "4px",
-          background: color,
-          borderRadius: "2px",
-          zIndex: 1,
-          transition: "width 0.7s cubic-bezier(0.4,0,0.2,1)",
+          width: visible ? (barWidth || 120) : 0,
+          height: 8,
+          background: barColor,
+          boxShadow: visible ? `0 0 24px 4px ${barGlow}, 0 0 48px 8px ${barGlow}80` : 'none',
+          opacity: visible ? 1 : 0,
+          transition: 'width 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.5s',
         }}
       />
     </div>

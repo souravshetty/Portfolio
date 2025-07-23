@@ -4,10 +4,10 @@ import { LiaXing } from "react-icons/lia"; // X (Twitter) alternative
 
 const navItems = [
   { href: "#home", icon: <FaHome size={22} />, label: "Home" },
-  { href: "#resume", icon: <FaRegFileAlt size={22} />, label: "Resume" },
-  { href: "https://github.com/", icon: <FaGithub size={22} />, label: "GitHub", external: true },
-  { href: "https://linkedin.com/", icon: <FaLinkedin size={22} />, label: "LinkedIn", external: true },
-  { href: "https://x.com/", icon: <LiaXing size={22} />, label: "X (Twitter)", external: true },
+  { href: "/resume.pdf", icon: <FaRegFileAlt size={22} />, label: "Resume", external: true },
+  { href: "https://github.com/souravshetty", icon: <FaGithub size={22} />, label: "GitHub", external: true },
+  { href: "https://www.linkedin.com/in/sourav-s-shetty/", icon: <FaLinkedin size={22} />, label: "LinkedIn", external: true },
+  { href: "https://x.com/souravshetty", icon: <LiaXing size={22} />, label: "X (Twitter)", external: true },
 ];
 
 const BottomNav = () => {
@@ -31,7 +31,7 @@ const BottomNav = () => {
             href={item.href}
             target={item.external ? "_blank" : undefined}
             rel={item.external ? "noopener noreferrer" : undefined}
-            className="group p-2 rounded-full transition-colors duration-150 hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white"
+            className="group p-2 rounded-full transition-colors duration-150 hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white text-inherit dark:text-cyan-300"
             title={item.label}
           >
             {item.icon}

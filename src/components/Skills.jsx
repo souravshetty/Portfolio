@@ -73,11 +73,11 @@ const Skills = () => {
   const headingRef = React.useRef(null);
 
   return (
-    <section className="w-full min-h-screen flex flex-col items-center justify-center">
+    <section className="w-full min-h-screen flex flex-col items-center justify-center text-black dark:text-cyan-200">
       {/* Centered LightBar and Heading */}
-      <div className="w-full flex flex-col items-center justify-center">
-        <LightBar headingRef={headingRef} widthOffset={120} />
-        <h2 ref={headingRef} className="relative z-30 text-5xl font-bold mb-6 animated-gradient-text text-center">Skills</h2>
+      <div className="w-full flex flex-col items-center justify-center max-w-4xl mx-auto">
+        <LightBar color="#22d3ee" glow="#22d3ee" headingRef={headingRef} widthOffset={120} />
+        <h2 ref={headingRef} className="relative z-30 text-5xl font-bold mb-6 animated-gradient-text text-center text-black dark:text-cyan-200">Skills</h2>
       </div>
       {/* Two-column grid: GIF + Skills */}
       <div className="w-full flex flex-col md:flex-row gap-10 md:gap-20 items-stretch justify-center rounded-2xl p-8 shadow-lg">
@@ -92,7 +92,7 @@ const Skills = () => {
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-4 py-1 rounded border border-cyan-400 text-cyan-300 font-mono text-sm transition-all ${filter === cat ? 'bg-cyan-400 text-gray-900 dark:text-gray-900' : 'hover:bg-cyan-700 hover:text-white'}`}
+                className={`px-4 py-1 rounded border border-cyan-400 text-black dark:text-cyan-300 font-mono text-sm transition-all ${filter === cat ? 'bg-cyan-400 text-gray-900 dark:text-gray-900' : 'hover:bg-cyan-700 hover:text-white'}`}
               >
                 {cat}
               </button>
@@ -102,7 +102,7 @@ const Skills = () => {
             {filteredSkills.map(skill => (
               <div key={skill.name} className="flex flex-col items-center gap-2 animate-glow rounded-full">
                 <img src={skill.icon} alt={skill.name} className="w-12 h-12" />
-                <span className="text-cyan-200 font-mono text-sm text-center">{skill.name}</span>
+                <span className="text-black dark:text-cyan-200 font-mono text-sm text-center">{skill.name}</span>
               </div>
             ))}
           </div>

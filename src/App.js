@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header';
-
+import WhatIDo from './components/WhatIDo';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Skills from './components/Skills';
@@ -13,13 +13,14 @@ import About from './components/About';
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: '#232946' }}>
+    <div className="min-h-screen flex flex-col bg-white dark:bg-[#232946]">
       <Header />
-      <About/>
-      <Experience />
-      <Education />
+      
+      <WhatIDo />
       <Skills />
       <Projects />
+      {/* <Experience />
+      <Education /> */}
       <Contact />
       <Footer />
       <BottomNav />
