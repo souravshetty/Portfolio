@@ -42,7 +42,7 @@ const items = [
 const WhatIDo = () => {
   const headingRef = useRef(null);
   return (
-    <section className="w-full py-16 bg-white dark:bg-[#232946] flex flex-col items-center" id="what-i-do">
+    <section className="w-full py-16 bg-white dark:bg-[#232946] flex flex-col items-center px-4 md:px-0" id="what-i-do">
       <LightBar color="#22d3ee" glow="#22d3ee" headingRef={headingRef} widthOffset={350} />
       <h2 ref={headingRef} className="text-4xl md:text-5xl font-bold mb-4 text-white animated-gradient-text text-center">What I do</h2>
       <p className="text-lg text-black dark:text-cyan-300 mb-10 text-center max-w-2xl">
@@ -50,7 +50,7 @@ const WhatIDo = () => {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-5xl">
         {items.map((item) => (
-          <div key={item.title} className="whatido-card rounded-xl shadow-lg border border-cyan-900 transition h-96 text-[#1a1a2e] dark:text-cyan-100">
+          <div key={item.title} className="whatido-card rounded-xl shadow-lg border border-cyan-900 transition h-96 text-[#1a1a2e] dark:text-cyan-100 animate-glow">
             <div className="whatido-card-inner w-full h-full">
               <div className="whatido-card-front">
                 <h3 className="text-2xl font-semibold text-cyan-300 mb-3 mt-6">{item.title}</h3>

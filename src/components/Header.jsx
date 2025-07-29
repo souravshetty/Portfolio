@@ -46,7 +46,7 @@ const Header = () => {
   }, []);
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-[60vh] text-cyan-300 relative bg-white dark:bg-[#232946]">
+    <section className="flex flex-col items-center justify-center min-h-[60vh] text-cyan-300 relative bg-white dark:bg-[#232946] px-4 md:px-0">
       {/* Rainbow balls for decoration */}
       <div className="absolute top-0 left-0 z-0 pointer-events-none">
         <div className="w-32 h-32 rounded-full rainbow-gradient-animate opacity-70"></div>
@@ -120,6 +120,12 @@ const Header = () => {
         <a href="https://www.linkedin.com/in/sourav-s-shetty/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
           <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.28c-.966 0-1.75-.79-1.75-1.76 0-.97.784-1.76 1.75-1.76s1.75.79 1.75 1.76c0 .97-.784 1.76-1.75 1.76zm13.5 11.28h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.89v1.36h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v5.59z"/></svg>
         </a>
+      </div>
+      <div className="mt-4 flex items-center justify-center z-10">
+        <div className="flex items-center gap-2 bg-[#181f2a] rounded-xl px-4 py-2 shadow text-white font-medium text-base">
+          <span className="w-4 h-4 bg-green-500 rounded-full inline-block shadow-inner" />
+          <span>Open for new opportunities as a <span className="font-bold text-white">DEVELOPER</span> ✨</span>
+        </div>
       </div>
     </section>
   );

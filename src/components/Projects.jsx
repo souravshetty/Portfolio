@@ -45,7 +45,7 @@ const Projects = () => {
       <h2 ref={headingRef} className="relative z-30 animated-gradient-text text-5xl font-bold mb-6 text-center">Projects</h2>
       <div className="grid md:grid-cols-2 gap-6">
         {projects.map((project) => (
-          <div key={project.name} className="bg-white dark:bg-[#1a1a2e] rounded-lg shadow p-4 flex flex-col text-[#1a1a2e] dark:text-cyan-100">
+          <div key={project.name} className="bg-white dark:bg-[#1a1a2e] rounded-lg shadow p-2 flex flex-col text-[#1a1a2e] dark:text-cyan-100 animate-glow">
             <img src={project.image} alt={project.name} className="rounded mb-3 w-full object-contain max-h-72 bg-black" />
             <h3 className="font-bold text-xl mb-1">{project.name}</h3>
             <div className="text-xs text-gray-400 mb-1">{project.date}</div>

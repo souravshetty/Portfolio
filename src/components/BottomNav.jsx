@@ -4,16 +4,13 @@ import { LiaXing } from "react-icons/lia"; // X (Twitter) alternative
 
 const navItems = [
   { href: "#home", icon: <FaHome size={22} />, label: "Home" },
-  { href: "/resume.pdf", icon: <FaRegFileAlt size={22} />, label: "Resume", external: true },
+  { href: "/sourav_resume.pdf", icon: <FaRegFileAlt size={22} />, label: "Resume", external: true },
   { href: "https://github.com/souravshetty", icon: <FaGithub size={22} />, label: "GitHub", external: true },
   { href: "https://www.linkedin.com/in/sourav-s-shetty/", icon: <FaLinkedin size={22} />, label: "LinkedIn", external: true },
-  { href: "https://x.com/souravshetty", icon: <LiaXing size={22} />, label: "X (Twitter)", external: true },
 ];
 
 const BottomNav = () => {
-  const [dark, setDark] = useState(() =>
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  );
+  const [dark, setDark] = useState(true);
 
   useEffect(() => {
     if (dark) {
@@ -24,7 +21,7 @@ const BottomNav = () => {
   }, [dark]);
 
   return (
-    <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md rounded-full shadow-lg flex items-center px-6 py-2 gap-4 border border-gray-200 dark:border-gray-700">
+    <nav className="fixed bottom-2 left-1/2 -translate-x-1/2 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md rounded-full shadow-lg flex items-center px-2 py-2 gap-2 border border-gray-200 dark:border-gray-700 w-[96vw] max-w-xs md:max-w-lg md:px-6 md:py-2 md:gap-4" style={{boxSizing: 'border-box'}}>
       {navItems.map((item, idx) => (
         <React.Fragment key={item.label}>
           <a
@@ -33,6 +30,7 @@ const BottomNav = () => {
             rel={item.external ? "noopener noreferrer" : undefined}
             className="group p-2 rounded-full transition-colors duration-150 hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white text-inherit dark:text-cyan-300"
             title={item.label}
+            onClick={item.label === "Home" ? (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); } : undefined}
           >
             {item.icon}
           </a>
