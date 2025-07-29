@@ -82,9 +82,14 @@ const Contact = () => {
           <div className="absolute bottom-4 left-4 bg-gray-800 bg-opacity-70 rounded-lg px-5 py-2 shadow text-white text-lg font-semibold">
             Vancouver, BC
           </div>
+          
         </div>
       </div>
+      <footer className="text-center py-6 text-cyan-400 text-sm border-t mt-50">
+  &copy; {new Date().getFullYear()} Designed and Developed by <strong>Sourav Shetty</strong>. All rights reserved.
+</footer>
     </section>
+    
   );
 };
 

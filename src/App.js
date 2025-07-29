@@ -22,7 +22,7 @@ function App() {
       {/* <Experience />
       <Education /> */}
       <Contact />
-      <Footer />
+      {/* <Footer /> */}
       <BottomNav />
     </div>
   );
