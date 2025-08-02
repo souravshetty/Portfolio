@@ -4,7 +4,7 @@ import webDesignGif from "../assests/web design.gif";
 import dataSecurityGif from "../assests/DATA SECURITY.gif";
 import apiIntegrationGif from "../assests/API Integration.gif";
 import hostingGif from "../assests/Hosting.gif";
-import LightBar from "./LightBar";
+// import LightBar from "./LightBar";
 
 const items = [
   {
@@ -43,7 +43,7 @@ const WhatIDo = () => {
   const headingRef = useRef(null);
   return (
     <section className="w-full py-16 bg-white dark:bg-[#232946] flex flex-col items-center px-4 md:px-0" id="what-i-do">
-      <LightBar color="#22d3ee" glow="#22d3ee" headingRef={headingRef} widthOffset={350} />
+      {/* <LightBar color="#22d3ee" glow="#22d3ee" headingRef={headingRef} widthOffset={350} /> */}
       <h2 ref={headingRef} className="text-4xl md:text-5xl font-bold mb-4 text-white animated-gradient-text text-center">What I do</h2>
       <p className="text-lg text-black dark:text-cyan-300 mb-10 text-center max-w-2xl">
         I help businesses and individuals bring their ideas to life with modern web technologies, scalable cloud solutions, and beautiful user experiences.

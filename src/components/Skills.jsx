@@ -26,7 +26,7 @@ import bootstrap from '../assests/bootstrap.svg';
 // Import your coding GIF (assume it's named coding.gif and placed in assests)
 import codingGif from '../assests/coding.gif';
 import '../index.css'; // Ensure custom animation is available
-import LightBar from "./LightBar";
+// import LightBar from "./LightBar";
 
 const skillData = [
   // Languages
@@ -76,7 +76,7 @@ const Skills = () => {
     <section className="w-full min-h-screen flex flex-col items-center justify-center text-black dark:text-cyan-200">
       {/* Centered LightBar and Heading */}
       <div className="w-full flex flex-col items-center justify-center max-w-4xl mx-auto">
-        <LightBar color="#22d3ee" glow="#22d3ee" headingRef={headingRef} widthOffset={700} />
+        {/* <LightBar color="#22d3ee" glow="#22d3ee" headingRef={headingRef} widthOffset={700} /> */}
         <h2 ref={headingRef} className="relative z-30 text-5xl font-bold mb-6 animated-gradient-text text-center text-black dark:text-cyan-200">Skills</h2>
       </div>
       {/* Two-column grid: GIF + Skills */}

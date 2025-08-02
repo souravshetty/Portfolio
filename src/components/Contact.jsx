@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import LightBar from "./LightBar";
+// import LightBar from "./LightBar";
 import DecorativeLines from "./DecorativeLines";
 import { FaEnvelope } from "react-icons/fa";
 import vancouverMap from "../assests/vancouver-map.png"; // You need to add this image to your assets folder
@@ -26,7 +26,7 @@ const Contact = () => {
   return (
     <section className="relative w-full min-h-[70vh] flex flex-col items-center justify-center bg-white dark:bg-[#232946] py-16 px-4">
       <DecorativeLines />
-      <LightBar color="#22d3ee" glow="#22d3ee" headingRef={headingRef} widthOffset={380} />
+      {/* <LightBar color="#22d3ee" glow="#22d3ee" headingRef={headingRef} widthOffset={380} /> */}
       <h2 ref={headingRef} className="animated-gradient-text text-5xl font-bold mb-4 text-center">Get In Touch</h2>
       <p className="text-lg text-black dark:text-cyan-100 mb-10 text-center max-w-2xl">
         I'm actively looking for any new opportunities, my inbox is always open. As a passionate developer, I’m eager to learn, grow, and contribute. If you have any questions, opportunities, or simply wish to say hello, I’d be delighted to hear from you.
